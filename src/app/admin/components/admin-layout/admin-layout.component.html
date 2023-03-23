@@ -1,8 +1,11 @@
 <mat-toolbar color="primary">
     <span><h1>Blog</h1></span>
     <span class="spacer"></span>
-      <span>Main</span>
-      <span>Create</span>
-      <span>login</span>
+      <span routerLink="/admin/home" routerLinkActive="active">Home</span>
+      <span routerLink="/admin/create" routerLinkActive="active">Create</span>
+      <span routerLink="/admin/login" routerLinkActive="active">login</span>
       <span>logout</span>
   </mat-toolbar>
+
+  <router-outlet></router-outlet>
+  
