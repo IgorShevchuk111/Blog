@@ -1,0 +1,66 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { User } from 'src/app/interfaces';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  public error$: Subject<string> = new Subject<string>()
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  get token () {
+    return
+  }
+
+  // Login User
+  login(user: User):Observable<any> {
+    user.returnSecureToken = true
+    return this.http.post<User>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,user)
+    .pipe(
+      tap(res => {console.log('ddd',res);}),
+      catchError(this.handleError.bind(this))
+      )
+  }
+
+  handleError(error: HttpErrorResponse){
+    const errorMessage = error.error.error.message
+    switch (errorMessage) {
+      case 'EMAIL_NOT_FOUND':
+        this.error$.next('Wrong email')
+        break;
+
+      case 'INVALID_PASSWORD':
+        this.error$.next('Invalid password')
+        break; 
+      
+        case 'TOO_MANY_ATTEMPTS_TRY_LATER : Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.':
+        this.error$.next('TOO_MANY_ATTEMPTS_TRY_LATER')
+        break;
+        
+      default:
+        break;
+    }
+    
+    return throwError(error)
+  }
+  // Logout User
+  logout() {
+
+  }
+// isAuthenticated
+  isAuthenticated() {
+
+  }
+
+  // set token (response) {
+
+  // }
+}

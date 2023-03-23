@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,12 +8,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
+  // reset material form
+  @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
 
   hide = true;
-
   form!: FormGroup;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -38,10 +42,13 @@ export class LoginPageComponent implements OnInit {
     }
     return null
   }
-
+// Submit  form login
   submit() {
    if (this.form.invalid) {
-    return
+    return 
    }
+   const user = {...this.form.value}
+   this.authService.login(user).subscribe()
+   this.formDirective.resetForm()
     }
 }
