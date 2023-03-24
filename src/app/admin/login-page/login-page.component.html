@@ -1,6 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
   <mat-card class="card">
     <h1>Lonin Form</h1>
+    <!-- ErrorResponseMessage -->
+    <div class="error" *ngIf="authService.error$ | async  as errorResponseMessage">{{errorResponseMessage}}</div>
+    <!-- Email -->
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Enter your email</mat-label>
@@ -8,17 +11,19 @@
       <mat-error *ngIf="form.get('email')?.invalid">{{getErrorMessageEmail()}}</mat-error>
     </mat-form-field>
   </div>
+  <!-- Password -->
   <div>
     <mat-form-field appearance="fill">
       <mat-label>Enter your password</mat-label>
       <input matInput placeholder="password" formControlName="password" [type]="hide ? 'password' : 'text'" required="">
       <mat-error *ngIf="form.get('password')?.invalid">{{getErrorMessagePassword()}}</mat-error>
-      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+      <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
   </div>
+  <!-- Submit -->
   <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Login</button>
 </mat-card>
 </form>
