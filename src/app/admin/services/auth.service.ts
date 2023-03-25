@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { User } from 'src/app/interfaces';
+import { User } from 'src/app/shared/interfaces';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -59,7 +59,16 @@ export class AuthService {
 
   }
   // SetToken
-  private setToken(response: any) {
+  private setToken(response: any | null) {
     console.log('f', response);
+    if (response) {
+      console.log('ffg', response);
+      const expireDate = new Date(Date.now() + +response.expiresIn * 1000)
+      localStorage.setItem('expireDate', expireDate.toString())
+      localStorage.setItem('idToken', response.idToken)
+    } else {
+      localStorage.clear()
+    }
+   
   }
 }
