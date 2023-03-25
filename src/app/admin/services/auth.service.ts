@@ -60,7 +60,6 @@ export class AuthService {
   }
   // SetToken
   private setToken(response: any | null) {
-    console.log('f', response);
     if (response) {
       console.log('ffg', response);
       const expireDate = new Date(Date.now() + +response.expiresIn * 1000)
@@ -69,6 +68,5 @@ export class AuthService {
     } else {
       localStorage.clear()
     }
-   
   }
 }
