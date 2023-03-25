@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable  } from '@angular/core';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from 'src/app/shared/interfaces';
@@ -8,16 +8,22 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService{
 
   public error$: Subject<string> = new Subject<string>()
 
   constructor(
     private http: HttpClient
   ) { }
-
+// Get Token
   get token() {
-    return
+    const expDate = new Date(localStorage.getItem('expireDate')??  '')
+    if(new Date() > expDate) {
+      this.logout()
+    return null
+    } else {
+      return localStorage.getItem('idToken')
+  } 
   }
   // Login User
   login(user: User): Observable<any> {
@@ -52,11 +58,11 @@ export class AuthService {
   }
   // Logout User
   logout() {
-
+    this.setToken(null)
   }
   // isAuthenticated
-  isAuthenticated() {
-
+  isAuthenticated(): boolean {
+   return !!this.token
   }
   // SetToken
   private setToken(response: any | null) {
