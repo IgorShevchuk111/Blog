@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -13,9 +14,12 @@ export class LoginPageComponent implements OnInit {
 
   hide = true;
   form!: FormGroup;
+  passwordResponseError = false
+  inputResponseError: boolean = false;
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +27,25 @@ export class LoginPageComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     })
+// Get  Error Subject from authService
+    this.authService.getErrorSubject().subscribe(errorMessage => {
+      switch (errorMessage) {
+        case 'Invalid password':
+          this.passwordResponseError = true
+          this.inputResponseError = false
+          break;
+
+          case 'Wrong email':
+          this.inputResponseError = true
+          this.passwordResponseError = false
+          break;
+      
+        default:
+          this.passwordResponseError = false
+          this.inputResponseError = false
+          break;
+      }
+    });
   }
   
 // Error massage for Email
@@ -48,7 +71,9 @@ export class LoginPageComponent implements OnInit {
     return 
    }
    const user = {...this.form.value}
-   this.authService.login(user).subscribe()
-   this.formDirective.resetForm()
+   this.authService.login(user).subscribe(()=>{
+    this.router.navigate(['/'])
+    this.formDirective.resetForm()
+   })
     }
 }

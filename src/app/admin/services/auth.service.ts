@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable  } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from 'src/app/shared/interfaces';
@@ -8,22 +9,23 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService{
+export class AuthService {
 
   public error$: Subject<string> = new Subject<string>()
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
-// Get Token
+  // Get Token
   get token() {
-    const expDate = new Date(localStorage.getItem('expireDate')??  '')
-    if(new Date() > expDate) {
+    const expDate = new Date(localStorage.getItem('expireDate') ?? '')
+    if (new Date() > expDate) {
       this.logout()
-    return null
+      return null
     } else {
       return localStorage.getItem('idToken')
-  } 
+    }
   }
   // Login User
   login(user: User): Observable<any> {
@@ -56,13 +58,18 @@ export class AuthService{
 
     return throwError(error)
   }
+  // Get error$
+  getErrorSubject() {
+    return this.error$;
+  }
   // Logout User
   logout() {
+    this.router.navigate(['/'])
     this.setToken(null)
   }
   // isAuthenticated
   isAuthenticated(): boolean {
-   return !!this.token
+    return !!this.token
   }
   // SetToken
   private setToken(response: any | null) {

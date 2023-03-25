@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+    <span routerLink="/"><h1>Blog</h1></span>
+    <span class="spacer"></span>
+      <span routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</span>
+      <span *ngIf="authService.isAuthenticated()" routerLink="/admin/create" routerLinkActive="active">Create</span>
+      <span routerLink="admin/login" routerLinkActive="active">login</span>
+      <span *ngIf="authService.isAuthenticated()" (click)="logout()">logout</span>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
