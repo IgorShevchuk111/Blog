@@ -7,12 +7,13 @@ import { CreatePageComponent } from './create-page/create-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageAdminComponent } from './home-page-admin/home-page-admin.component';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: AdminLayoutComponent, children: [
     {path: 'login', component: LoginPageComponent},
-    {path: 'create', component: CreatePageComponent},
-    {path: 'home', component: HomePageAdminComponent}
+    {path: 'create', component: CreatePageComponent, canActivate:[AuthGuardService],},
+    {path: 'home', component: HomePageAdminComponent, canActivate:[AuthGuardService],}
   ]}
 ];
 

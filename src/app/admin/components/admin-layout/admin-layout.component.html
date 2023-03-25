@@ -4,7 +4,7 @@
       <span routerLink="/admin/home" routerLinkActive="active">Home</span>
       <span routerLink="/admin/create" routerLinkActive="active">Create</span>
       <span routerLink="/admin/login" routerLinkActive="active">login</span>
-      <span>logout</span>
+      <span (click)="logout()">logout</span>
   </mat-toolbar>
 
   <router-outlet></router-outlet>
