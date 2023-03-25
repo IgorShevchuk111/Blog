@@ -16,21 +16,20 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  get token () {
+  get token() {
     return
   }
-
   // Login User
-  login(user: User):Observable<any> {
+  login(user: User): Observable<any> {
     user.returnSecureToken = true
-    return this.http.post<User>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,user)
-    .pipe(
-      tap(res => {console.log('ddd',res);}),
-      catchError(this.handleError.bind(this))
+    return this.http.post<User>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
+      .pipe(
+        tap(this.setToken),
+        catchError(this.handleError.bind(this))
       )
   }
-
-  handleError(error: HttpErrorResponse){
+  // HandleError
+  handleError(error: HttpErrorResponse) {
     const errorMessage = error.error.error.message
     switch (errorMessage) {
       case 'EMAIL_NOT_FOUND':
@@ -39,28 +38,28 @@ export class AuthService {
 
       case 'INVALID_PASSWORD':
         this.error$.next('Invalid password')
-        break; 
-      
-        case 'TOO_MANY_ATTEMPTS_TRY_LATER : Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.':
+        break;
+
+      case 'TOO_MANY_ATTEMPTS_TRY_LATER : Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.':
         this.error$.next('TOO_MANY_ATTEMPTS_TRY_LATER')
         break;
-        
+
       default:
         break;
     }
-    
+
     return throwError(error)
   }
   // Logout User
   logout() {
 
   }
-// isAuthenticated
+  // isAuthenticated
   isAuthenticated() {
 
   }
-
-  // set token (response) {
-
-  // }
+  // SetToken
+  private setToken(response: any) {
+    console.log('f', response);
+  }
 }
