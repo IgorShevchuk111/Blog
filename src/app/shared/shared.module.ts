@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { QuillModule } from 'ngx-quill'
 
 
 
@@ -14,13 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    QuillModule.forRoot(),
   ],
   exports: [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    QuillModule
   ]
 })
 export class SharedModule { }
