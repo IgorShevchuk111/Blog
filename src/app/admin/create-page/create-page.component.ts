@@ -14,8 +14,17 @@ export class CreatePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.form  = new FormGroup({
-      title: new FormControl('',[Validators.required])
+      author: new FormControl('',[Validators.required]),
+      title: new FormControl('',[Validators.required]),
+      text: new FormControl('',[Validators.required]),
     })
   }
+
+  submit() {
+   if (this.form.invalid) {
+    return
+   }
+   
+    }
 
 }

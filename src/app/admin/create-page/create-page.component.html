@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="card">
+<form [formGroup]="form" class="card" (ngSubmit)="submit()">
     <mat-card>
         <div class="logForm">
             <h1>Create Post</h1>
@@ -6,20 +6,22 @@
         </div>
         <!-- Post title -->
         <mat-form-field appearance="fill">
-            <mat-label>Post Title</mat-label>
-            <input matInput type="text" >
+            <mat-label>Post Author</mat-label>
+            <input matInput type="text" formControlName="author">
         </mat-form-field>
         <!-- Post Author -->
         <mat-form-field appearance="fill">
             <mat-label>Post Title</mat-label>
-            <input matInput type="text" >
+            <input matInput type="text" formControlName="title">
         </mat-form-field>
         <!-- Quill Text -->
         <div class="quill-container">
-            <label>Post Text</label>
-            <quill-editor></quill-editor>
+            <label [ngClass]="{'error': form.get('text')?.touched && form.get('text')?.invalid}"
+            >Post Text</label>
+            <quill-editor formControlName="text" [ngClass]="{'error-quill': form.get('text')?.touched && form.get('text')?.invalid}"
+            ></quill-editor>
         </div>
         <!-- Submit buttonn -->
-        <button mat-flat-button color="primary" type="submit">Create Post</button>
+        <button [disabled]="form.invalid" mat-flat-button color="primary" type="submit">Create Post</button>
     </mat-card>
 </form>

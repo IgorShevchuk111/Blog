@@ -9,8 +9,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   flex: 1;
 }
 .error{
-  color: red;
+  color: red !important;
 }
 .quill-container label{
   color: #626262;
+}
+.error-quill{
+  border: 1px solid red;
 }
