@@ -1,1 +1,19 @@
-<p>create-page works!</p>
+<form [formGroup]="form" class="card">
+    <mat-card>
+        <div class="logForm">
+            <h1>Create Post</h1>
+            <!-- <div class="error" *ngIf="authService.error$ | async  as errorResponseMessage">{{errorResponseMessage}}</div> -->
+        </div>
+        <!-- Post title -->
+        <mat-form-field appearance="fill">
+            <mat-label>Post Title</mat-label>
+            <input matInput type="text" >
+        </mat-form-field>
+        <!-- Post Author -->
+        <mat-form-field appearance="fill">
+            <mat-label>Post Title</mat-label>
+            <input matInput type="text" >
+        </mat-form-field>
+        <button mat-flat-button color="primary" type="submit">Create Post</button>
+    </mat-card>
+</form>
