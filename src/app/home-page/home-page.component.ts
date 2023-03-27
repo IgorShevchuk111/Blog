@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit {
   posts: Post[] = []
 
   constructor(
-    private postsService: PostsService
+    public postsService: PostsService
   ) { }
 
   ngOnInit(): void {
