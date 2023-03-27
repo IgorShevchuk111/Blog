@@ -1,3 +1,10 @@
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
 span{
     margin: 20px;
   }
@@ -6,4 +13,4 @@ span{
   }
   span:hover{
   cursor: pointer;
-  }
+  } 

@@ -5,7 +5,7 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 
 const routes: Routes = [
   {path: '', component: MainLayoutComponent, children: [
-    {path: 'home', component: HomePageComponent}
+    {path: '', component: HomePageComponent}
   ]},
   {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}
 ];

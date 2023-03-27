@@ -1,1 +1,32 @@
-<p>home-page works!</p>
+<div class="home-posts-header-grid">
+    <div>#</div>
+    <div>
+        <h1>Author</h1>
+    </div>
+    <div>
+        <h1>Title</h1>
+    </div>
+    <div>
+        <h1>Date</h1>
+    </div>
+    <div>
+        <h1>Action</h1>
+    </div>
+</div>
+
+<mat-card class="home-posts-grid" *ngFor="let p of posts; let i = index">
+    <div>{{i + 1}}</div>
+    <div>
+        <h3>{{p.author}}</h3>
+    </div>
+    <div>
+        <h3>{{p.title}}</h3>
+    </div>
+    <div>
+        <h3>{{p.date}}</h3>
+    </div>
+    <div>
+        <h3><a href="#">Open</a></h3>
+        <h3><a href="#">Delete</a></h3>
+    </div>
+</mat-card>

@@ -5,15 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { HomePageAdminComponent } from './home-page-admin/home-page-admin.component';
 import { SharedModule } from '../shared/shared.module';
 import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {path: '', component: AdminLayoutComponent, children: [
     {path: 'login', component: LoginPageComponent},
-    {path: 'create', component: CreatePageComponent, canActivate:[AuthGuardService],},
-    {path: 'home', component: HomePageAdminComponent, canActivate:[AuthGuardService],}
+    {path: 'create', component: CreatePageComponent, canActivate:[AuthGuardService],}
   ]}
 ];
 
@@ -21,8 +19,7 @@ const routes: Routes = [
   declarations: [
     AdminLayoutComponent,
     CreatePageComponent,
-    LoginPageComponent,
-    HomePageAdminComponent,
+    LoginPageComponent
   ],
   imports: [
     RouterModule.forChild(routes),

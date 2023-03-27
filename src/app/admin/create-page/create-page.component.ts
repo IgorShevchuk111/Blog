@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Post } from 'src/app/shared/interfaces';
 import { PostsService } from '../../shared/services/posts.service';
 
@@ -11,6 +12,7 @@ import { PostsService } from '../../shared/services/posts.service';
 export class CreatePageComponent implements OnInit {
 
   form!: FormGroup
+  createSub!: Subscription
 
   // reset material form
   @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
@@ -37,9 +39,14 @@ export class CreatePageComponent implements OnInit {
      text: this.form.value.text,
      date: new Date(),
    }
-   this.postsService.createPost(post).subscribe( ()  =>  {
+   this.createSub = this.postsService.createPost(post).subscribe( ()  =>  {
     this.formDirective.resetForm()
    })
     }
-
+    
+    ngOnDestroy(): void {
+      if (this.createSub) {
+        this.createSub.unsubscribe()
+      }
+    }
 }

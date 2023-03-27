@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Post } from '../shared/interfaces';
+import { PostsService } from '../shared/services/posts.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  getPostSub!: Subscription
+  posts: Post[] = []
+
+  constructor(
+    private postsService: PostsService
+  ) { }
 
   ngOnInit(): void {
+    // Get Posts
+    this.getPostSub = this.postsService.getPosts().subscribe( response => {
+      console.log('get',response);
+      this.posts = response
+    })
   }
-
+  // Unsubscribe
+  ngOnDestroy(): void {
+    if (this.getPostSub) {
+      this.getPostSub.unsubscribe()
+    }
+  }
 }
