@@ -34,9 +34,7 @@ export class PostsService {
     return this.http.get(`${environment.fbdb}/posts.json?auth=${this.idToken}`)
       .pipe(
         map((response: { [key: string]: any }) => {
-          console.log('resp',response);
-          
-          return Object
+       return Object
             .keys(response)
             .map(key => ({
               ...response[key],
@@ -45,5 +43,9 @@ export class PostsService {
             }))
         })
       )
+  }
+  // Remove Post
+  removePost(id: string) {
+    return this.http.delete(`${environment.fbdb}/posts/${id}.json?auth=${this.idToken}`)
   }
 }

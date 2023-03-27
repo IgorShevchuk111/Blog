@@ -18,7 +18,7 @@ export class CreatePageComponent implements OnInit {
   @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
 
   constructor(
-    private postsService: PostsService
+    public postsService: PostsService
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +27,7 @@ export class CreatePageComponent implements OnInit {
       title: new FormControl('',[Validators.required]),
       text: new FormControl('',[Validators.required]),
     })
+   
   }
 
   submit() {
