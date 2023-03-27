@@ -34,6 +34,8 @@ export class PostsService {
     return this.http.get(`${environment.fbdb}/posts.json?auth=${this.idToken}`)
       .pipe(
         map((response: { [key: string]: any }) => {
+          console.log('resp',response);
+          
           return Object
             .keys(response)
             .map(key => ({

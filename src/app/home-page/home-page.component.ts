@@ -20,7 +20,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     // Get Posts
     this.getPostSub = this.postsService.getPosts().subscribe( response => {
-      console.log('get',response);
       this.posts = response
     })
   }
