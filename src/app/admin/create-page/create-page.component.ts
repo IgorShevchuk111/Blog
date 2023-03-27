@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { Post } from 'src/app/shared/interfaces';
+import { PostsService } from '../../shared/services/posts.service';
 
 @Component({
   selector: 'app-create-page',
@@ -10,7 +12,12 @@ export class CreatePageComponent implements OnInit {
 
   form!: FormGroup
 
-  constructor() { }
+  // reset material form
+  @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
+
+  constructor(
+    private postsService: PostsService
+  ) { }
 
   ngOnInit(): void {
     this.form  = new FormGroup({
@@ -24,7 +31,15 @@ export class CreatePageComponent implements OnInit {
    if (this.form.invalid) {
     return
    }
-   
+   const post: Post = {
+     author: this.form.value.author,
+     title: this.form.value.title,
+     text: this.form.value.text,
+     date: new Date(),
+   }
+   this.postsService.createPost(post).subscribe( ()  =>  {
+    this.formDirective.resetForm()
+   })
     }
 
 }
