@@ -11,8 +11,6 @@ import { Post } from '../interfaces';
 })
 export class PostsService {
 
-  idToken = this.auth.token
-
   constructor(
     private http: HttpClient,
     private auth: AuthService
@@ -20,7 +18,7 @@ export class PostsService {
 
   // Create Post
   createPost(post: Post): Observable<Post> {
-    return this.http.post<Post>(`${environment.fbdb}/posts.json?auth=${this.idToken}`, post)
+    return this.http.post<Post>(`${environment.fbdb}/posts.json`, post)
       .pipe(map((response: any) => {
         return {
           ...post,
@@ -31,7 +29,7 @@ export class PostsService {
   }
   // Get Posts
   getPosts() {
-    return this.http.get(`${environment.fbdb}/posts.json?auth=${this.idToken}`)
+    return this.http.get(`${environment.fbdb}/posts.json`)
       .pipe(
         map((response: { [key: string]: any }) => {
        return Object
@@ -46,6 +44,6 @@ export class PostsService {
   }
   // Remove Post
   removePost(id: string) {
-    return this.http.delete(`${environment.fbdb}/posts/${id}.json?auth=${this.idToken}`)
+    return this.http.delete(`${environment.fbdb}/posts/${id}.json`)
   }
 }

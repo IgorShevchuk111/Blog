@@ -37,7 +37,6 @@ export class HomePageComponent implements OnInit {
       this.postsService.removePost(id).subscribe(() => {
         this.posts = this.posts.filter(p => p.id != id)
       })
-      console.log('token', this.postsService.idToken);
     }
     }
 }
