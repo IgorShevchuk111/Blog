@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../admin/services/auth.service';
 import { Post } from '../shared/interfaces';
@@ -16,12 +17,13 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private postsService: PostsService,
-    public auth: AuthService
+    public auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     // Get Posts
-    this.getPostSub = this.postsService.getPosts().subscribe( response => {
+    this.getPostSub = this.postsService.getPosts().subscribe(response => {
       this.posts = response
     })
   }
@@ -38,5 +40,11 @@ export class HomePageComponent implements OnInit {
         this.posts = this.posts.filter(p => p.id != id)
       })
     }
+  }
+  // Open Post
+  openPost(id?: string) {
+    if (id) {
+      this.router.navigate(['/post', id])
     }
+  }
 }

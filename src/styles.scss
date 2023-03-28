@@ -6,8 +6,13 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 body{
-  margin-top: 120px;
+  margin-top: 68px;
 }
+
+* {
+  box-sizing: border-box;
+}
+
 .spacer{
   flex: 1;
 }
