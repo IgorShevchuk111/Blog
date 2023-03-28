@@ -27,6 +27,6 @@
     </div>
     <div>
         <h3><a href="#">Open</a></h3>
-        <h3 *ngIf="postsService.idToken"><a href="#" (click)="removePost(p.id)">Delete</a></h3>
+        <h3 *ngIf="auth.isAuthenticated()"><a href="#" (click)="removePost(p.id)">Delete</a></h3>
     </div>
 </mat-card>

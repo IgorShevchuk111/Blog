@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../admin/services/auth.service';
 import { Post } from '../shared/interfaces';
 import { PostsService } from '../shared/services/posts.service';
 
@@ -14,7 +15,8 @@ export class HomePageComponent implements OnInit {
   posts: Post[] = []
 
   constructor(
-    public postsService: PostsService
+    private postsService: PostsService,
+    public auth: AuthService
   ) { }
 
   ngOnInit(): void {
