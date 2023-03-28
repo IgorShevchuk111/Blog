@@ -1,0 +1,21 @@
+<form [formGroup]="form" *ngIf="form" class="card" (ngSubmit)="submit()">
+    <mat-card>
+        <div class="logForm">
+            <h1>Update Post</h1>
+        </div>
+        <!-- Post Title -->
+        <mat-form-field appearance="fill">
+            <mat-label>Post Title</mat-label>
+            <input matInput type="text" formControlName="title">
+        </mat-form-field>
+        <!-- Quill Text -->
+        <div class="quill-container">
+            <label [ngClass]="{'error': form.get('text')?.touched && form.get('text')?.invalid}"
+            >Post Text</label>
+            <quill-editor formControlName="text" [ngClass]="{'error-quill': form.get('text')?.touched && form.get('text')?.invalid}"
+            ></quill-editor>
+        </div>
+        <!-- Submit buttonn -->
+        <button [disabled]="form.invalid" mat-flat-button color="primary" type="submit">Update Post</button>
+    </mat-card>
+</form>

@@ -1,6 +1,6 @@
 .card {
     max-width: 800px;
-    margin: 50px auto;
+    margin: 85px auto;
 }
 
 .home-posts-header-grid {
@@ -44,6 +44,7 @@
             color: #ffffff;
             border-radius: 5px;
             padding: 5px;
+            cursor: pointer;
         }
         a:hover{
             opacity: 0.8;

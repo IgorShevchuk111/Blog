@@ -47,4 +47,8 @@ export class HomePageComponent implements OnInit {
       this.router.navigate(['/post', id])
     }
   }
+  // Edit
+  editPost(id?: string){
+    this.router.navigate(['/admin', 'edit', id])
+  }
 }
