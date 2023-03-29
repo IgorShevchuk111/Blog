@@ -31,6 +31,20 @@ export class AuthInterceptorService implements HttpInterceptor {
                       authFailed: true
                   }
               })
+          } else if (error.error.error.message === 'EMAIL_NOT_FOUND') {
+            this.auth.logout()
+              this.router.navigate(['/admin', 'login'],{
+                  queryParams: {
+                      wrongEmail: true
+                  }
+              })
+          } else if (error.error.error.message === 'INVALID_PASSWORD') {
+            this.auth.logout()
+              this.router.navigate(['/admin', 'login'],{
+                  queryParams: {
+                      wrongPasswodr: true
+                  }
+              })
           }
           return throwError(error)
       }))

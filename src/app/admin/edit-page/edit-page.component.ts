@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Post } from 'src/app/shared/interfaces';
 import { PostsService } from 'src/app/shared/services/posts.service';
@@ -11,18 +11,17 @@ import { PostsService } from 'src/app/shared/services/posts.service';
   styleUrls: ['./edit-page.component.scss']
 })
 export class EditPageComponent implements OnInit {
-submit() {
-throw new Error('Method not implemented.');
-}
 
   form!: FormGroup
   post!: Post
 
 constructor (
   private postsServices: PostsService,
-  private route: ActivatedRoute
+  private route: ActivatedRoute,
+  private router: Router
 ){ }
 ngOnInit(): void {
+  // Update Post get post by id
   this.route.params.pipe(
     switchMap( (params: Params) => {
       return this.postsServices.getPostById(params['id'])
@@ -35,4 +34,18 @@ ngOnInit(): void {
     })
   })
 }
+// Update Post
+submit() {
+  if (this.form.invalid) {
+    return
+  }
+  const udDatedPost: Post = {
+    ...this.post,
+    text: this.form.value.text,
+    title: this.form.value.title,
+  }
+  this.postsServices.upDatePost(udDatedPost).subscribe(post => {
+    this.router.navigate([''])
+  })
+  }
 }

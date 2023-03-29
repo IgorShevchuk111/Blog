@@ -57,4 +57,8 @@ return this.http.get<Post>(`${environment.fbdb}/posts/${id}.json`)
   }
 }))
   }
+  // Patch Post
+  upDatePost(upDatePost: Post): Observable<Post>{
+   return this.http.patch<Post>(`${environment.fbdb}/posts/${upDatePost.id}.json`,upDatePost)
+  }
 }
