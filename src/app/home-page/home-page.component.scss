@@ -5,12 +5,18 @@
 
 .home-posts-header-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     max-width: 800px;
-    margin: 50px auto;
+    margin: 0 auto;
     background: #F6F5F6;
     padding: 0 16px;
-
+    position: fixed;
+    width: 100%;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    width: 100%;
     div {
         display: flex;
         justify-content: center;
@@ -25,7 +31,7 @@
 
 .home-posts-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
     max-width: 800px;
     margin: 50px auto;
 
@@ -51,7 +57,7 @@
         }
     }
 
-    div:nth-child(5) {
+    div:nth-child(4) {
         display: flex;
 
         h3 {
