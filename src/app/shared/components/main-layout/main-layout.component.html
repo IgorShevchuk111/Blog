@@ -2,7 +2,7 @@
   <span routerLink="/" routerLinkActive="active">
     <h1>Blog</h1>
   </span>
-  <span class="spacer"></span>
+  <div class="navMenu">
   <div class="search">
     <input matInput *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
     <button mat-icon-button (click)="showInput = !showInput">
@@ -11,6 +11,7 @@
   </div>
   <span routerLink="/">Back</span>
   <span routerLink="admin/login" routerLinkActive="active">login</span>
+</div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

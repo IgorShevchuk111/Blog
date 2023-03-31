@@ -1,22 +1,36 @@
 .navBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-  }
-  span{
-      margin: 20px;
-    }
-    .active{
-      color: rgb(193, 193, 193);
-    }
-    span:hover{
-    cursor: pointer;
-    } 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-.search{
-    input{
-      border-radius: 25px;
-    }
+
+}
+
+span {
+  margin: 20px;
+}
+
+.active {
+  color: rgb(193, 193, 193);
+}
+
+span:hover {
+  cursor: pointer;
+}
+
+.search {
+  input {
+    border-radius: 25px;
+  }
+}
+
+.navMenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
