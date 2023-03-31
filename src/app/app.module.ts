@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SearchPostPipe } from './shared/search-post.pipe';
 
 
 const  INTERCEPTOR_PROVIDER: Provider = {
@@ -22,7 +23,8 @@ const  INTERCEPTOR_PROVIDER: Provider = {
   declarations: [
     AppComponent,
     HomePageComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    SearchPostPipe
   ],
   imports: [
     BrowserModule,

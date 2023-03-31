@@ -4,13 +4,13 @@ import { MaterialModule } from './material/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { QuillModule } from 'ngx-quill';
-import { PostComponent } from './components/post/post.component'
+import { PostComponent } from './components/post/post.component';
 
 
 
 @NgModule({
   declarations: [
-    PostComponent
+    PostComponent,
   ],
   imports: [
     CommonModule,

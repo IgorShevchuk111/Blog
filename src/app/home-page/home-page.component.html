@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="home-posts-grid" *ngFor="let p of posts; let i = index">
+        <div class="home-posts-grid" *ngFor="let p of posts | searchPost:navSearchInput; let i = index">
             <div>
                 <h3>{{p.author}}</h3>
             </div>

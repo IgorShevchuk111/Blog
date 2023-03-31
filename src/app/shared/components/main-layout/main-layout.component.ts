@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/admin/services/auth.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -8,15 +9,20 @@ import { AuthService } from 'src/app/admin/services/auth.service';
 })
 export class MainLayoutComponent implements OnInit {
 
+  showInput = false
+  navSearchInput = ''
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    private sharedService:  SharedService
   ){}
-  
   ngOnInit(): void {
   }
   // Logout
   logout(){
     this.authService.logout()
   }
-
+  // Send navSearchInput to navSearchInputSource$ Subject
+  onNavSearchInputChange(){
+    this.sharedService.navSearchInputSource$.next(this.navSearchInput)
+  }
 }

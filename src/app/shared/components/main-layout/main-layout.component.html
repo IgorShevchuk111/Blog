@@ -3,8 +3,14 @@
     <h1>Blog</h1>
   </span>
   <span class="spacer"></span>
+  <div class="search">
+    <input matInput *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
+    <button mat-icon-button (click)="showInput = !showInput">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
   <span routerLink="/">Back</span>
   <span routerLink="admin/login" routerLinkActive="active">login</span>
 </mat-toolbar>
 
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
