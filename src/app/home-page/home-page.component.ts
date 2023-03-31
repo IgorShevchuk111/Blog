@@ -33,22 +33,10 @@ export class HomePageComponent implements OnInit {
       this.getPostSub.unsubscribe()
     }
   }
-  // Delete Post
-  removePost(id?: string) {
-    if (id) {
-      this.postsService.removePost(id).subscribe(() => {
-        this.posts = this.posts.filter(p => p.id != id)
-      })
-    }
-  }
   // Open Post
   openPost(id?: string) {
     if (id) {
       this.router.navigate(['/post', id])
     }
-  }
-  // Edit
-  editPost(id?: string){
-    this.router.navigate(['/admin', 'edit', id])
   }
 }

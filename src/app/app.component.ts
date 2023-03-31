@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from './admin/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +7,8 @@ import { AuthService } from './admin/services/auth.service';
 })
 export class AppComponent {
 
-  constructor(
-    public authService: AuthService
-  ){}
-  
-  logout(){
-    this.authService.logout()
-  }
+  constructor(){}
+
  
 }
 

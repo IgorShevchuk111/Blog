@@ -28,7 +28,8 @@
                 <h3>{{p.date | date}}</h3>
             </div>
             <div>
-                <h3 ><a (click)="openPost(p.id)">Open</a></h3>
+                <h3><a (click)="editPost(p.id)">Edit</a></h3>
+                <h3><a (click)="removePost(p.id)">Delete</a></h3>
             </div>
         </mat-card>
     </mat-card>

@@ -45,7 +45,7 @@ submit() {
     title: this.form.value.title,
   }
   this.postsServices.upDatePost(udDatedPost).subscribe(post => {
-    this.router.navigate([''])
+    this.router.navigate(['/admin', 'posts'])
   })
   }
 }

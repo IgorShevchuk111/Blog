@@ -72,7 +72,7 @@ export class LoginPageComponent implements OnInit {
    }
    const user = {...this.form.value}
    this.authService.login(user).subscribe(()=>{
-    this.router.navigate(['/'])
+    this.router.navigate(['/admin','posts'])
     this.formDirective.resetForm()
    })
     }
