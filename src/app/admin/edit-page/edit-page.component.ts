@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Post } from 'src/app/shared/interfaces';
+import { MatSnackBarService } from 'src/app/shared/services/mat-snack-bar.service';
 import { PostsService } from 'src/app/shared/services/posts.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class EditPageComponent implements OnInit {
 constructor (
   private postsServices: PostsService,
   private route: ActivatedRoute,
-  private router: Router
+  private router: Router,
+  private matSnackBar: MatSnackBarService
 ){ }
 ngOnInit(): void {
   // Update Post get post by id
@@ -46,6 +48,7 @@ submit() {
   }
   this.postsServices.upDatePost(udDatedPost).subscribe(post => {
     this.router.navigate(['/admin', 'posts'])
+    this,this.matSnackBar.openSnackBar('Post updated !')
   })
   }
 }

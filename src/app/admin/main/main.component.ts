@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/shared/interfaces';
+import { MatSnackBarService } from 'src/app/shared/services/mat-snack-bar.service';
 import { PostsService } from 'src/app/shared/services/posts.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 
@@ -19,7 +20,8 @@ export class MainComponent implements OnInit {
   constructor(
     private postsService: PostsService,
     private router: Router,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private matSnackBar: MatSnackBarService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,7 @@ export class MainComponent implements OnInit {
     if (id) {
       this.postsService.removePost(id).subscribe(() => {
         this.posts = this.posts.filter(p => p.id != id)
+        this.matSnackBar.openSnackBar('Post Deleted !')
       })
     }
   }
