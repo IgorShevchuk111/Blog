@@ -1,6 +1,13 @@
 <mat-toolbar class="navBar" color="primary">
     <span routerLink=""  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><h1>Blog</h1></span>
     <span class="spacer"></span>
+    <div *ngIf="auth.isAuthenticated()" class="search">
+      <input  *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
+      <button mat-icon-button (click)="showInput = !showInput">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <span *ngIf="auth.isAuthenticated()" routerLink="/admin/posts">Back</span>
       <span *ngIf="auth.isAuthenticated()" routerLink="/admin/posts" routerLinkActive="active" >Posts</span>
       <span *ngIf="auth.isAuthenticated()" routerLink="/admin/create" routerLinkActive="active">Create</span>
       <span routerLink="/admin/login" routerLinkActive="active">login</span>

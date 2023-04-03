@@ -14,3 +14,17 @@
     span:hover{
     cursor: pointer;
     } 
+    // search Post
+    .search {
+      input {
+        border-radius: 25px;
+        max-width: 150px;
+        text-align: center;
+        width: 100%;
+        outline: none;
+        font-size: 20px;
+        vertical-align: middle;
+        border: none;
+        padding: 0;
+      }
+    }

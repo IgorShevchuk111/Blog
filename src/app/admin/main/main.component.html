@@ -15,7 +15,7 @@
             </div>
         </mat-card>
 
-        <mat-card class="home-posts-grid" *ngFor="let p of posts; let i = index">
+        <mat-card class="home-posts-grid" *ngFor="let p of posts | adminSearch:navSearchInput; let i = index">
             <div>
                 <h3>{{p.author}}</h3>
             </div>

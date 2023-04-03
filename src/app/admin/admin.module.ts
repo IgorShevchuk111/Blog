@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthGuardService } from './services/auth-guard.service';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { MainComponent } from './main/main.component';
+import { AdminSearchPipe } from './admin-search.pipe';
 
 const routes: Routes = [
   {path: '', component: AdminLayoutComponent, children: [
@@ -24,7 +25,8 @@ const routes: Routes = [
     CreatePageComponent,
     LoginPageComponent,
     EditPageComponent,
-    MainComponent
+    MainComponent,
+    AdminSearchPipe
   ],
   imports: [
     RouterModule.forChild(routes),

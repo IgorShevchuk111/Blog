@@ -1,35 +1,15 @@
-<div *ngIf="posts.length else load"> 
-    <div class="card">
-        <mat-card class="home-posts-header-grid">
-            <div>
-                <h1>Author</h1>
-            </div>
-            <div>
-                <h1>Title</h1>
-            </div>
-            <div>
-                <h1>Date</h1>
-            </div>
-            <div>
-                <h1>Action</h1>
-            </div>
-        </mat-card>
-
-        <mat-card class="home-posts-grid" *ngFor="let p of posts | searchPost:navSearchInput; let i = index">
-            <div>
-                <h3>{{p.author}}</h3>
-            </div>
-            <div>
-                <h3>{{p.title}}</h3>
-            </div>
-            <div>
-                <h3>{{p.date | date}}</h3>
-            </div>
-            <div>
-                <h3 ><a (click)="openPost(p.id)">Open</a></h3>
-            </div>
-        </mat-card>
-    </div>
+<div *ngIf="posts.length else load">
+    <mat-card *ngFor="let p of posts | searchPost:navSearchInput; let i = index">
+        <mat-card-header class="card-header-flex">
+            <mat-card-title>{{p.title}}</mat-card-title>
+            <mat-card-subtitle>{{p.author}}</mat-card-subtitle>
+            <div class="spacer"></div>
+            <p>{{p.date | date}}</p>
+        </mat-card-header>
+        <mat-card-actions>
+            <button mat-button (click)="openPost(p.id)">Open</button>
+        </mat-card-actions>
+    </mat-card>
 </div>
 <ng-template #load>
     <h1>Loading...</h1>
