@@ -1,7 +1,6 @@
 <div *ngIf="posts.length else load">
-    <mat-card class="card">
-        <div class="home-posts-header-grid">
-            <div>#</div>
+    <div class="card">
+        <mat-card class="home-posts-header-grid">
             <div>
                 <h1>Author</h1>
             </div>
@@ -14,10 +13,9 @@
             <div>
                 <h1>Action</h1>
             </div>
-        </div>
+        </mat-card>
 
         <mat-card class="home-posts-grid" *ngFor="let p of posts; let i = index">
-            <div>{{i + 1}}</div>
             <div>
                 <h3>{{p.author}}</h3>
             </div>
@@ -32,7 +30,7 @@
                 <h3><a (click)="removePost(p.id)">Delete</a></h3>
             </div>
         </mat-card>
-    </mat-card>
+    </div>
 </div>
 <ng-template #load>
     <h1>Loading...</h1>
