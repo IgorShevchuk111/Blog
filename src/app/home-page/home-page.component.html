@@ -1,6 +1,6 @@
 <div *ngIf="posts.length else load"> 
-    <mat-card class="card">
-        <div class="home-posts-header-grid">
+    <div class="card">
+        <mat-card class="home-posts-header-grid">
             <div>
                 <h1>Author</h1>
             </div>
@@ -13,9 +13,9 @@
             <div>
                 <h1>Action</h1>
             </div>
-        </div>
+        </mat-card>
 
-        <div class="home-posts-grid" *ngFor="let p of posts | searchPost:navSearchInput; let i = index">
+        <mat-card class="home-posts-grid" *ngFor="let p of posts | searchPost:navSearchInput; let i = index">
             <div>
                 <h3>{{p.author}}</h3>
             </div>
@@ -28,8 +28,8 @@
             <div>
                 <h3 ><a (click)="openPost(p.id)">Open</a></h3>
             </div>
-        </div>
-    </mat-card>
+        </mat-card>
+    </div>
 </div>
 <ng-template #load>
     <h1>Loading...</h1>
