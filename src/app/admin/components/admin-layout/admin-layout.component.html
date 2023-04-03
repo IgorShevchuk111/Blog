@@ -1,5 +1,5 @@
 <mat-toolbar class="navBar" color="primary">
-    <span routerLink="/"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><h1>Blog</h1></span>
+    <span routerLink=""  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><h1>Blog</h1></span>
     <span class="spacer"></span>
       <span *ngIf="auth.isAuthenticated()" routerLink="/admin/posts" routerLinkActive="active" >Posts</span>
       <span *ngIf="auth.isAuthenticated()" routerLink="/admin/create" routerLinkActive="active">Create</span>

@@ -15,7 +15,7 @@ export class MainLayoutComponent implements OnInit {
     public authService: AuthService,
     private sharedService:  SharedService
   ){}
-  ngOnInit(): void {
+  ngOnInit(): void { 
   }
   // Logout
   logout(){

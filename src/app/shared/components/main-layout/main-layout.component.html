@@ -1,10 +1,10 @@
 <mat-toolbar class="navBar" color="primary">
-  <span routerLink="/" routerLinkActive="active">
+  <span routerLink="" routerLinkActive="active">
     <h1>Blog</h1>
   </span>
   <div class="navMenu">
   <div class="search">
-    <input matInput *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
+    <input  *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
     <button mat-icon-button (click)="showInput = !showInput">
       <mat-icon>search</mat-icon>
     </button>
