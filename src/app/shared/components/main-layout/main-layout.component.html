@@ -1,4 +1,4 @@
-<mat-toolbar class="navBar" color="primary">
+<mat-toolbar [ngClass]="{'sticky': isSticky}"  color="primary">
   <span routerLink="" routerLinkActive="active">
     <h1>Blog</h1>
   </span>

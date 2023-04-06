@@ -1,15 +1,20 @@
-.navBar {
-  position: fixed;
-  top: 0;
+// Sticky Navbar
+mat-toolbar {
+  position: sticky;
+  top: -64px;
   left: 0;
   width: 100%;
   z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-
+  transition: top 0.5s ease;
 }
+.sticky {
+  position: sticky;
+  top: 0;
+}
+// 
 
 span {
   margin: 20px;
