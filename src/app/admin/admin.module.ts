@@ -9,6 +9,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { MainComponent } from './main/main.component';
 import { AdminSearchPipe } from './admin-search.pipe';
+import { NumericInputDirective } from './directives/numeric-input.directive';
 
 const routes: Routes = [
   {path: '', component: AdminLayoutComponent, children: [
@@ -26,7 +27,8 @@ const routes: Routes = [
     LoginPageComponent,
     EditPageComponent,
     MainComponent,
-    AdminSearchPipe
+    AdminSearchPipe,
+    NumericInputDirective
   ],
   imports: [
     RouterModule.forChild(routes),
