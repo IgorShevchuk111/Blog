@@ -1,4 +1,4 @@
-.card{
+.card {
     max-width: 600px;
     margin: 85px auto;
 }
@@ -6,11 +6,19 @@
 mat-form-field {
     width: 100%;
 }
-.logForm{
+
+.logForm {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
 form {
     padding-top: 100px;
+}
+
+@media (max-width: 620px) {
+    .card {
+        margin: 20px;
+    }
 }
