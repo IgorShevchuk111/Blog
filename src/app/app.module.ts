@@ -1,4 +1,4 @@
-import { NgModule, Provider } from '@angular/core';
+import { NgModule, Provider, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthInterceptorService } from './shared/services/auth-interceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SearchPostPipe } from './shared/search-post.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 const  INTERCEPTOR_PROVIDER: Provider = {
@@ -30,7 +31,13 @@ const  INTERCEPTOR_PROVIDER: Provider = {
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
