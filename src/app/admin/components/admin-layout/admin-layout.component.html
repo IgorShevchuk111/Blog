@@ -3,17 +3,37 @@
     <h1>Blog</h1>
   </span>
   <span class="spacer"></span>
-  <div *ngIf="auth.isAuthenticated()" class="search">
-    <input *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
-    <button mat-icon-button (click)="showInput = !showInput">
-      <mat-icon>search</mat-icon>
-    </button>
+  <div class="navMenu">
+    <div *ngIf="auth.isAuthenticated()" class="search">
+      <input *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
+      <button mat-icon-button (click)="showInput = !showInput">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <span *ngIf="auth.isAuthenticated()" routerLink="/admin/posts">Back</span>
+    <span *ngIf="auth.isAuthenticated()" routerLink="/admin/posts" routerLinkActive="active">Posts</span>
+    <span *ngIf="auth.isAuthenticated()" routerLink="/admin/create" routerLinkActive="active">Create</span>
+    <span routerLink="/admin/login" routerLinkActive="active">login</span>
+    <span *ngIf="auth.isAuthenticated()" (click)="logout()">logout</span>
   </div>
-  <span *ngIf="auth.isAuthenticated()" routerLink="/admin/posts">Back</span>
-  <span *ngIf="auth.isAuthenticated()" routerLink="/admin/posts" routerLinkActive="active">Posts</span>
-  <span *ngIf="auth.isAuthenticated()" routerLink="/admin/create" routerLinkActive="active">Create</span>
-  <span routerLink="/admin/login" routerLinkActive="active">login</span>
-  <span *ngIf="auth.isAuthenticated()" (click)="logout()">logout</span>
+  <div class="navMenuIcon">
+    <div class="search">
+      <input *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
+      <button mat-icon-button (click)="showInput = !showInput">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button routerLink="/admin/posts" mat-menu-item>Back</button>
+      <button routerLink="/admin/posts" mat-menu-item>Posts</button>
+      <button routerLink="/admin/create" mat-menu-item>Create</button>
+      <button routerLink="/admin/login" routerLinkActive="active" mat-menu-item>login</button>
+      <button (click)="logout()" mat-menu-item>logout</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

@@ -21,32 +21,31 @@ export class AuthInterceptorService implements HttpInterceptor {
       })
     }
     return next.handle(req)
-    .pipe(
-      catchError((error: HttpErrorResponse)=>{
-          console.log('inters', error);
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
           if (error.status === 401) {
-              this.auth.logout()
-              this.router.navigate(['/admin', 'login'],{
-                  queryParams: {
-                      authFailed: true
-                  }
-              })
+            this.auth.logout()
+            this.router.navigate(['/admin', 'login'], {
+              queryParams: {
+                authFailed: true
+              }
+            })
           } else if (error.error.error.message === 'EMAIL_NOT_FOUND') {
             this.auth.logout()
-              this.router.navigate(['/admin', 'login'],{
-                  queryParams: {
-                      wrongEmail: true
-                  }
-              })
+            this.router.navigate(['/admin', 'login'], {
+              queryParams: {
+                wrongEmail: true
+              }
+            })
           } else if (error.error.error.message === 'INVALID_PASSWORD') {
             this.auth.logout()
-              this.router.navigate(['/admin', 'login'],{
-                  queryParams: {
-                      wrongPasswodr: true
-                  }
-              })
+            this.router.navigate(['/admin', 'login'], {
+              queryParams: {
+                wrongPasswodr: true
+              }
+            })
           }
           return throwError(error)
-      }))
+        }))
   }
 }

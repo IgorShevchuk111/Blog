@@ -1,15 +1,14 @@
 <div *ngIf="posts.length else load">
-    <mat-card *ngFor="let p of posts | searchPost:navSearchInput; let i = index">
-        <mat-card-header class="card-header-flex">
-            <mat-card-title>{{p.title}}</mat-card-title>
-            <mat-card-subtitle>{{p.author}}</mat-card-subtitle>
-            <div class="spacer"></div>
+    <div class="container" *ngFor="let p of posts | searchPost:navSearchInput; let i = index">
+        <h2>{{p.title}}</h2>
+        <div class="header">
+            <h3>{{p.author}} <small>(author)</small></h3>
             <p>{{p.date | date}}</p>
-        </mat-card-header>
-        <mat-card-actions>
-            <button mat-button (click)="openPost(p.id)">Open</button>
-        </mat-card-actions>
-    </mat-card>
+        </div>
+        <quill-view-html [content]="p.text.slice(0,400)+ '...'"></quill-view-html>
+        <button mat-button (click)="openPost(p.id)">Open</button>
+        <hr>
+    </div>
 </div>
 <ng-template #load>
     <h1>Loading...</h1>

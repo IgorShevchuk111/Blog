@@ -1,17 +1,32 @@
-<mat-toolbar [ngClass]="{'sticky': isSticky}"  color="primary">
+<mat-toolbar [ngClass]="{'sticky': isSticky}" color="primary">
   <span routerLink="" routerLinkActive="active">
     <h1>Blog</h1>
   </span>
   <div class="navMenu">
-  <div class="search">
-    <input  *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
-    <button mat-icon-button (click)="showInput = !showInput">
-      <mat-icon>search</mat-icon>
-    </button>
+    <div class="search">
+      <input *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
+      <button mat-icon-button (click)="showInput = !showInput">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <span routerLink="/">Back</span>
+    <span routerLink="admin/login" routerLinkActive="active">login</span>
   </div>
-  <span routerLink="/">Back</span>
-  <span routerLink="admin/login" routerLinkActive="active">login</span>
-</div>
+  <div class="navMenuIcon">
+    <div class="search">
+      <input *ngIf="showInput" [(ngModel)]="navSearchInput" (ngModelChange)="onNavSearchInputChange()">
+      <button mat-icon-button (click)="showInput = !showInput">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button routerLink="/" mat-menu-item>Back</button>
+      <button routerLink="admin/login" mat-menu-item>login</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

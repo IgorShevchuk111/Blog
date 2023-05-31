@@ -1,35 +1,20 @@
 <div *ngIf="posts.length else load">
-    <div class="card">
-        <mat-card class="home-posts-header-grid">
-            <div>
-                <h1>Author</h1>
+    <div class="container">
+        <div *ngFor="let p of posts | adminSearch:navSearchInput; let i = index">
+            <h2>{{p.title}}</h2>
+            <div class="header">
+                <h3>{{p.author}} <small>(author)</small></h3>
+                <p>{{p.date | date}}</p>
             </div>
             <div>
-                <h1>Title</h1>
+                <quill-view-html [content]="p.text.slice(0,400)+ '...'"></quill-view-html>
             </div>
             <div>
-                <h1>Date</h1>
+                <button (click)="editPost(p.id)" mat-button>Edit</button>
+                <button (click)="removePost(p.id)" mat-button>Delete</button>
             </div>
-            <div>
-                <h1>Action</h1>
-            </div>
-        </mat-card>
-
-        <mat-card class="home-posts-grid" *ngFor="let p of posts | adminSearch:navSearchInput; let i = index">
-            <div>
-                <h3>{{p.author}}</h3>
-            </div>
-            <div>
-                <h3>{{p.title}}</h3>
-            </div>
-            <div>
-                <h3>{{p.date | date}}</h3>
-            </div>
-            <div>
-                <h3><a (click)="editPost(p.id)">Edit</a></h3>
-                <h3><a (click)="removePost(p.id)">Delete</a></h3>
-            </div>
-        </mat-card>
+            <hr>
+        </div>
     </div>
 </div>
 <ng-template #load>

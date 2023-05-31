@@ -1,4 +1,20 @@
-.mat-card {
+.container {
+    padding: 10px;
     max-width: 800px;
-    margin: 10px auto;
+    margin: 22px auto;
+
+    h2 {
+        text-align: center;
+    }
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
 }

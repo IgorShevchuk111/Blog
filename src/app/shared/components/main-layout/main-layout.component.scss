@@ -10,10 +10,12 @@ mat-toolbar {
   align-items: center;
   transition: top 0.5s ease;
 }
+
 .sticky {
   position: sticky;
   top: 0;
 }
+
 // 
 
 span {
@@ -46,4 +48,18 @@ span:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.navMenuIcon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .navMenu {
+    display: none;
+  }
+
+  .navMenuIcon {
+    display: flex;
+  }
 }

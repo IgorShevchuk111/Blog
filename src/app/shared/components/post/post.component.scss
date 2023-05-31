@@ -1,17 +1,19 @@
 .card {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
 }
-.info{
+
+.info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
 
-    h2{
+    h2 {
         margin: 0;
     }
 }
-h1{
+
+h1 {
     text-align: center;
 }

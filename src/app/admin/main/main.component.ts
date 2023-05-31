@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
 
   getPostSub!: Subscription
   posts: Post[] = []
-  navSearchInput:string = ''
+  navSearchInput: string = ''
 
   constructor(
     private postsService: PostsService,
@@ -30,20 +30,20 @@ export class MainComponent implements OnInit {
       response.reverse();
       this.posts = response
     });
-     // get navSearchInput
-     this.sharedService.navSearchInputSource$.subscribe( navSearchInput => {
+    // get navSearchInput
+    this.sharedService.navSearchInputSource$.subscribe(navSearchInput => {
       this.navSearchInput = navSearchInput
     })
   }
 
-   // Unsubscribe
-   ngOnDestroy(): void {
+  // Unsubscribe
+  ngOnDestroy(): void {
     if (this.getPostSub) {
       this.getPostSub.unsubscribe()
     }
   }
   // Edit
-  editPost(id?: string){
+  editPost(id?: string) {
     this.router.navigate(['/admin', 'edit', id])
   }
   // Delete Post

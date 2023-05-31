@@ -1,11 +1,12 @@
-
-<mat-card class="card" *ngIf="post$ | async as  post">
+<div class="card" *ngIf="post$ | async as  post">
     <h1>{{post.title | titlecase}}</h1>
     <div class="info">
-        <strong><h2>{{post.author}}</h2></strong>
+        <strong>
+            <h2>{{post.author}}</h2>
+        </strong>
         <p>{{post.date | date:'short'}}</p>
     </div>
     <div>
         <quill-view-html [content]="post.text"></quill-view-html>
     </div>
-</mat-card>
+</div>
