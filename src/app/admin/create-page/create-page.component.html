@@ -16,12 +16,13 @@
         </mat-form-field>
         <!-- Quill Text -->
         <div class="quill-container">
-            <label [ngClass]="{'error': form.get('text')?.touched && form.get('text')?.invalid}"
-            >Post Text</label>
-            <quill-editor formControlName="text" [ngClass]="{'error-quill': form.get('text')?.touched && form.get('text')?.invalid}"
-            ></quill-editor>
+            <label [ngClass]="{'error': form.get('text')?.touched && form.get('text')?.invalid}">Post Text</label>
+            <quill-editor formControlName="text"
+                [ngClass]="{'error-quill': form.get('text')?.touched && form.get('text')?.invalid}"></quill-editor>
         </div>
         <!-- Submit buttonn -->
         <button [disabled]="form.invalid" mat-flat-button color="primary" type="submit">Create Post</button>
     </mat-card>
+
+
 </form>
