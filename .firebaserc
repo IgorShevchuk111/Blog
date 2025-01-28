@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "blog-angular-material"
-  }
+    "default": "blog-angular-material",
+    " ": "blog-angular-material"
+  },
+  "targets": {},
+  "etags": {}
 }
