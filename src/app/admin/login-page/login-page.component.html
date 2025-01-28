@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
   <mat-card class="card">
     <div class="logForm">
-      <h1>Lonin Form</h1>
+      <h1>Login Form</h1>
       <div class="error" *ngIf="authService.error$ | async  as errorResponseMessage">{{errorResponseMessage}}</div>
     </div>
     <!-- Email -->
@@ -27,8 +27,6 @@
     </div>
     <!-- Submit -->
     <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Login</button>
-    <small style="margin: 0 20px; color: red;">Email: is@gmail.com</small>
-    <small style="margin: 0 20px; color: red;">Password: 123456</small>
   </mat-card>
 
 
